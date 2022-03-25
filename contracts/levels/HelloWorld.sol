@@ -4,6 +4,8 @@ pragma solidity ^0.8.0;
 import "../interfaces/ILevel.sol";
 
 contract HelloWorld is ILevel {
+    uint val = 1;
+
     function name() external pure override returns (string memory) {
         return "HelloWorld";
     }
