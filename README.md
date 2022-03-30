@@ -65,3 +65,4 @@ Hardhat tasks spec:
 - cheatsheet - Displays a list of evm opcodes with a brief explanation
   - Lists all available opcodes and allows you to search
   - For each opcode, displays an explanation of what it doesor each opcode, displays an explanation of what it does
+- deconstruct - Translates bytecode into assembly for readability
