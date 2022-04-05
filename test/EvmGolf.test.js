@@ -1,55 +1,111 @@
-// const assert = require('assert/strict');
+const assert = require('assert/strict');
+const { expect } = require('chai');
+const { waffle } = require('hardhat');
+// const { deployContract } = waffle;
 
-// const FOURTY_TWO_HEX = '0x3432';
-// const HELLO_HEX = '0x68656c6c6f';
-// const WORLD_HEX = '0x776f726c64';
-// const HI_HEX = '0x6869';
+describe("EvmGolf", function () {
+  let player;
+  let EvmGolf;
+  let solution;
+  let FailedTestLevel;
+  let TestLevel;
+  let level;
 
-// describe("EvmGolf", function () {
-//   let signer;
+  before('deploy EVMGolf', async function () {
+      const factory = await ethers.getContractFactory('EvmGolf');
+      EvmGolf = await factory.deploy();
+  });
 
-//   let EvmGolf;
+  before('deploy Test Level', async function () {
+    const factory = await ethers.getContractFactory('TestLevel');
+    TestLevel = await factory.deploy();
+  });
 
-//   before('identify signers', async function () {
-//     [signer] = (await ethers.getSigners());
-//   });
+  before('set variables', async function () {
+    [player] = (await ethers.getSigners());
+    // TODO are these different?
+    level = TestLevel.address;
+    solution = EvmGolf.address;
+  });
 
-//   before('deploy', async function () {
-//       const factory = await ethers.getContractFactory('EvmGolf');
-//       EvmGolf = await factory.deploy();
-//   });
+  describe('registerLevel with existing level', function () {
+    it('reverts with a new level name that already exists', async function () {
+        await EvmGolf.registerLevel(level);
+        // TODO How to check error its been reverted with
+        await expect(EvmGolf.registerLevel(level)).to.be.reverted;
+        // await expect(EvmGolf.registerLevel(level)).to.be.revertedWith(`LevelAlreadyRegistered(${level})`);
+    });
+  });
 
-//   describe('registerLevel with existing level name', function () {
-//     // before('deploy contract', async function () {
-//     //   const factory = await ethers.getContractFactory('Hello');
-//     //   Hello = await factory.deploy();
-//     // });
+  describe('register and play', function () {
+    it('registers a level', async function () {
+        await EvmGolf.registerLevel(level);
+    });
 
-//     it('reverts with a new level name that already exists', async function () {
-//     });
-//   }
+    describe('when the submission is invalid', function () {
+        before('deploy', async function () {
+            const factory = await ethers.getContractFactory('FailedTestLevel');
+            FailedTestLevel = await factory.deploy();
+        });
+        it('reverts the transaction with a LevelFailedSubmission error', async function () {
+            // TODO How to check error its been reverted with
+            await expect(EvmGolf.playLevel(FailedTestLevel.address, solution)).to.be.reverted;
+        });
+    });
 
-//   describe('register and play', function () {
+    describe('when the submission is valid', function () {
+        it('emits a LevelSolved event', async function () {
+            await expect(EvmGolf.playLevel(level, solution)).to.emit(EvmGolf, 'LevelSolved')
+                .withArgs(level, solution, player);
+        });
+        
+        describe('when there is no solution already', function () {
+            it('emits a LevelRecord', async function () {
+                await expect( EvmGolf.playLevel(level, solution)).to.emit(EvmGolf, 'LevelRecord');
+                //.withArgs(level, solution, player);
+            });
 
-//     it('registers a level', async function () {
-//       assert.equal(await ethers.provider.call({ to: Hello.address, data: HI_HEX }), FOURTY_TWO_HEX);
-//     });
+            it('increments the victory of the player', async function () {
+                await EvmGolf.playLevel(level, solution);
+                EvmGolf.getVictories[player];
+            });
+        });
 
-//     it('plays the level', async function () {
-//       assert.equal(await HelloWorld.submit(Hello.address), true);
-//     });
+        describe('when the solution is shorter than the record solution', function () {
+            it('emits a LevelRecord', async function () {
 
-//     it('emits a level record', async function () {
-//       const bytecode = await ethers.provider.getCode(Hello.address);
+            });
+            it('increments the victory of the player', async function () {
 
-//       // Uncomment to see Hello's runtime bytecode.
-//       // console.log(bytecode);
+            });
+            it('decrements the victory of the past record holder', async function () {
 
-//       assert.notEqual(bytecode.length, 0);
-//     });
+            });
+        });
 
-//     // when solution doesn't pass
-//     // when solution is not a record
-//     // when solution is a record
-//   });
-// });
+        describe('when the solution is longer than the record solution', function () {
+            it('does not emit a LevelRecord', async function () {
+
+            });
+            it('does not change the victory counts of the player', async function () {
+
+            });
+            it('does not change the victory counts of the record holder', async function () {
+
+            });
+        });
+
+        describe('when the solution is equal to the record solution', function () {
+            it('does not emit a LevelRecord', async function () {
+
+            });
+            it('does not change the victory counts of the player', async function () {
+
+            });
+            it('does not change the victory counts of the record holder', async function () {
+
+            });
+        });
+    });
+  });
+});

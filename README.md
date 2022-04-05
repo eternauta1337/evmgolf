@@ -23,7 +23,6 @@ EvmGolf.sol spec:
   - Verifies that the level is compatible / valid
   - Stores the address of the level in a �levels� array
   - Stores the address of the author of the level in a �authors� mapping
-  - Reverts if the given name is already used
 - playLevel(address level, address solution) public;
   - Calls the �submit(solution)� function in the corresponding level
   - If the internal call reverts or returns false, emits a LevelFailed(address level, address solution, address player) event.
