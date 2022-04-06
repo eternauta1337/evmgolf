@@ -51,6 +51,7 @@ describe("EvmGolf", function () {
         it('reverts the transaction with a LevelFailedSubmission error', async function () {
             // TODO How to check error its been reverted with
             await expect(EvmGolf.playLevel(FailedTestLevel.address, solution)).to.be.reverted;
+            // ).to.be.revertedWith(`LevelFailedSubmission(${FailedTestLevel.address})`);
         });
     });
 
@@ -62,8 +63,8 @@ describe("EvmGolf", function () {
         
         describe('when there is no solution already', function () {
             it('emits a LevelRecord', async function () {
-                await expect( EvmGolf.playLevel(level, solution)).to.emit(EvmGolf, 'LevelRecord');
-                //.withArgs(level, solution, player);
+                await expect( EvmGolf.playLevel(level, solution)).to.emit(EvmGolf, 'LevelRecord')
+                .withArgs(level, solution, player);
             });
 
             it('increments the victory of the player', async function () {
@@ -73,33 +74,46 @@ describe("EvmGolf", function () {
         });
 
         describe('when the solution is shorter than the record solution', function () {
-            it('emits a LevelRecord', async function () {
-
+            before('set solution', async function () {
+                EvmGolf.playLevel(level, solution)
             });
-            it('increments the victory of the player', async function () {
 
-            });
-            it('decrements the victory of the past record holder', async function () {
+            // it('emits a LevelRecord', async function () {
+            //     await expect(EvmGolf.playLevel(level, solution)).to.emit(EvmGolf, 'LevelRecord')
+            //     .withArgs(level, solution, player);
+            // });
 
-            });
+            // it('increments the victory of the player', async function () {
+            //     await EvmGolf.playLevel(level, solution);
+            //     EvmGolf.getVictories[player];
+            // });
+            // it('decrements the victory of the past record holder', async function () {
+
+            // });
         });
 
         describe('when the solution is longer than the record solution', function () {
             it('does not emit a LevelRecord', async function () {
-
+                EvmGolf.playLevel(level, solution)
+                await expect(EvmGolf.playLevel(level, solution)).not.to.emit(EvmGolf, 'LevelRecord')
+                .withArgs(level, solution, player);
             });
-            it('does not change the victory counts of the player', async function () {
 
-            });
-            it('does not change the victory counts of the record holder', async function () {
+            // it('does not change the victory counts of the player', async function () {
 
-            });
+            // });
+            // it('does not change the victory counts of the record holder', async function () {
+
+            // });
         });
 
         describe('when the solution is equal to the record solution', function () {
             it('does not emit a LevelRecord', async function () {
-
+                EvmGolf.playLevel(level, solution)
+                await expect(EvmGolf.playLevel(level, solution)).not.to.emit(EvmGolf, 'LevelRecord')
+                .withArgs(level, solution, player);
             });
+            
             it('does not change the victory counts of the player', async function () {
 
             });
