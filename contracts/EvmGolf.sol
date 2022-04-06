@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 import "./interfaces/ILevel.sol";
+import "hardhat/console.sol";
 
 contract EvmGolf {
     struct Level {
@@ -43,8 +44,6 @@ contract EvmGolf {
         if (success) {
             emit LevelSolved(level, solution, player);
         } else {
-            // TODO Will this work 
-            // emit LevelFailed(level, solution, player);
             revert LevelFailedSubmission(level);
         }
 
@@ -60,6 +59,7 @@ contract EvmGolf {
             });
            
             // increments and decrements a corresponding victories mapping
+            console.log('hello', _victories);
             _decrementVictories(past_record_holder);
             _incrementVictories(player);
 

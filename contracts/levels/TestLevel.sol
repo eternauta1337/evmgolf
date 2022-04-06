@@ -31,3 +31,11 @@ contract FailedTestLevel is ILevel {
         return false;
     }
 }
+
+contract LongSolution {
+    function name() external pure returns (string memory) {
+        return 'name';
+    }
+}
+
+contract ShortSolution {}
