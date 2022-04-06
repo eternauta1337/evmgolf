@@ -1,0 +1,1059 @@
+[
+ {
+   "Hex": "0",
+   "Name": "STOP",
+   "Gas": "0",
+   "Stack": "",
+   "Description": "STOP"
+ },
+ {
+   "Hex": "1",
+   "Name": "ADD",
+   "Gas": "3",
+   "Stack": "a, b => a + b",
+   "Description": "(u)int256 addition modulo 2**256"
+ },
+ {
+   "Hex": "2",
+   "Name": "MUL",
+   "Gas": "5",
+   "Stack": "a, b => a * b",
+   "Description": "(u)int256 multiplication modulo 2**256"
+ },
+ {
+   "Hex": "3",
+   "Name": "SUB",
+   "Gas": "3",
+   "Stack": "a, b => a - b",
+   "Description": "(u)int256 subtration modulo 2**256"
+ },
+ {
+   "Hex": "4",
+   "Name": "DIV",
+   "Gas": "5",
+   "Stack": "a, b => a // b",
+   "Description": "uint256 division"
+ },
+ {
+   "Hex": "5",
+   "Name": "SDIV",
+   "Gas": "5",
+   "Stack": "a, b => a // b",
+   "Description": "int256 division"
+ },
+ {
+   "Hex": "6",
+   "Name": "MOD",
+   "Gas": "5",
+   "Stack": "a, b => a % b",
+   "Description": "uint256 modulus"
+ },
+ {
+   "Hex": "7",
+   "Name": "SMOD",
+   "Gas": "5",
+   "Stack": "a, b => a % b",
+   "Description": "int256 modulus"
+ },
+ {
+   "Hex": "8",
+   "Name": "ADDMOD",
+   "Gas": "8",
+   "Stack": "a, b, N => (a + b) % N",
+   "Description": "(u)int256 addition modulo N"
+ },
+ {
+   "Hex": "9",
+   "Name": "MULMOD",
+   "Gas": "8",
+   "Stack": "a, b, N => (a * b) % N",
+   "Description": "(u)int256 multiplication modulo N"
+ },
+ {
+   "Hex": "0A",
+   "Name": "EXP",
+   "Gas": "A1",
+   "Stack": "a, b => a ** b",
+   "Description": "uint256 exponentiation modulo 2**256"
+ },
+ {
+   "Hex": "0B",
+   "Name": "SIGNEXTEND",
+   "Gas": "5",
+   "Stack": "b, x => SIGNEXTEND(x, b)",
+   "Description": "sign extend x from (b+1) bytes to 32 bytes"
+ },
+ {
+   "Hex": "0C-0F",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "10",
+   "Name": "LT",
+   "Gas": "3",
+   "Stack": "a, b => a < b",
+   "Description": "uint256 less-than"
+ },
+ {
+   "Hex": "11",
+   "Name": "GT",
+   "Gas": "3",
+   "Stack": "a, b => a > b",
+   "Description": "uint256 greater-than"
+ },
+ {
+   "Hex": "12",
+   "Name": "SLT",
+   "Gas": "3",
+   "Stack": "a, b => a < b",
+   "Description": "int256 less-than"
+ },
+ {
+   "Hex": "13",
+   "Name": "SGT",
+   "Gas": "3",
+   "Stack": "a, b => a > b",
+   "Description": "int256 greater-than"
+ },
+ {
+   "Hex": "14",
+   "Name": "EQ",
+   "Gas": "3",
+   "Stack": "a, b => a == b",
+   "Description": "(u)int256 equality"
+ },
+ {
+   "Hex": "15",
+   "Name": "ISZERO",
+   "Gas": "3",
+   "Stack": "a => a == 0",
+   "Description": "(u)int256 iszero"
+ },
+ {
+   "Hex": "16",
+   "Name": "AND",
+   "Gas": "3",
+   "Stack": "a, b => a && b",
+   "Description": "bitwise AND"
+ },
+ {
+   "Hex": "17",
+   "Name": "OR",
+   "Gas": "3",
+   "Stack": "a, b => a || b",
+   "Description": "bitwise OR"
+ },
+ {
+   "Hex": "18",
+   "Name": "XOR",
+   "Gas": "3",
+   "Stack": "a, b => a ^ b",
+   "Description": "bitwise XOR"
+ },
+ {
+   "Hex": "19",
+   "Name": "NOT",
+   "Gas": "3",
+   "Stack": "a => ~a",
+   "Description": "bitwise NOT"
+ },
+ {
+   "Hex": "1A",
+   "Name": "BYTE",
+   "Gas": "3",
+   "Stack": "i, x => (x >> (248 - i * 8)) && 0xFF",
+   "Description": "ith byte of (u)int256 x, from the left"
+ },
+ {
+   "Hex": "1B",
+   "Name": "SHL",
+   "Gas": "3",
+   "Stack": "shift, val => val << shift",
+   "Description": "shift left"
+ },
+ {
+   "Hex": "1C",
+   "Name": "SHR",
+   "Gas": "3",
+   "Stack": "shift, val => val >> shift",
+   "Description": "logical shift right"
+ },
+ {
+   "Hex": "1D",
+   "Name": "SAR",
+   "Gas": "3",
+   "Stack": "shift, val => val >> shift",
+   "Description": "arithmetic shift right"
+ },
+ {
+   "Hex": "1E-1F",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "20",
+   "Name": "SHA3",
+   "Gas": "A2",
+   "Stack": "ost, len => keccak256(mem[ost:ost+len])",
+   "Description": "keccak256"
+ },
+ {
+   "Hex": "21-2F",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "30",
+   "Name": "ADDRESS",
+   "Gas": "2",
+   "Stack": ". => address(this)",
+   "Description": "address of executing contract"
+ },
+ {
+   "Hex": "31",
+   "Name": "BALANCE",
+   "Gas": "A5",
+   "Stack": "addr => addr.balance",
+   "Description": "balance, in wei"
+ },
+ {
+   "Hex": "32",
+   "Name": "ORIGIN",
+   "Gas": "2",
+   "Stack": ". => tx.origin",
+   "Description": "address that originated the tx"
+ },
+ {
+   "Hex": "33",
+   "Name": "CALLER",
+   "Gas": "2",
+   "Stack": ". => msg.sender",
+   "Description": "address of msg sender"
+ },
+ {
+   "Hex": "34",
+   "Name": "CALLVALUE",
+   "Gas": "2",
+   "Stack": ". => msg.value",
+   "Description": "msg value, in wei"
+ },
+ {
+   "Hex": "35",
+   "Name": "CALLDATALOAD",
+   "Gas": "3",
+   "Stack": "idx => msg.data[idx:idx+32]",
+   "Description": "read word from msg data at index idx"
+ },
+ {
+   "Hex": "36",
+   "Name": "CALLDATASIZE",
+   "Gas": "2",
+   "Stack": ". => len(msg.data)",
+   "Description": "length of msg data, in bytes"
+ },
+ {
+   "Hex": "37",
+   "Name": "CALLDATACOPY",
+   "Gas": "A3",
+   "Stack": "dstOst, ost, len => .",
+   "Description": "copy msg data"
+ },
+ {
+   "Hex": "38",
+   "Name": "CODESIZE",
+   "Gas": "2",
+   "Stack": ". => len(this.code)",
+   "Description": "length of executing contract's code, in bytes"
+ },
+ {
+   "Hex": "39",
+   "Name": "CODECOPY",
+   "Gas": "A3",
+   "Stack": "dstOst, ost, len => .",
+   "Description": "mem[dstOst:dstOst+len] := this.code[ost:ost+len]"
+ },
+ {
+   "Hex": "3A",
+   "Name": "GASPRICE",
+   "Gas": "2",
+   "Stack": ". => tx.gasprice",
+   "Description": "gas price of tx, in wei per unit gas **"
+ },
+ {
+   "Hex": "3B",
+   "Name": "EXTCODESIZE",
+   "Gas": "A5",
+   "Stack": "addr => len(addr.code)",
+   "Description": "size of code at addr, in bytes"
+ },
+ {
+   "Hex": "3C",
+   "Name": "EXTCODECOPY",
+   "Gas": "A4",
+   "Stack": "addr, dstOst, ost, len => .",
+   "Description": "copy code from addr"
+ },
+ {
+   "Hex": "3D",
+   "Name": "RETURNDATASIZE",
+   "Gas": "2",
+   "Stack": ". => size",
+   "Description": "size of returned data from last external call, in bytes"
+ },
+ {
+   "Hex": "3E",
+   "Name": "RETURNDATACOPY",
+   "Gas": "A3",
+   "Stack": "dstOst, ost, len => .",
+   "Description": "copy returned data from last external call"
+ },
+ {
+   "Hex": "3F",
+   "Name": "EXTCODEHASH",
+   "Gas": "A5",
+   "Stack": "addr => hash",
+   "Description": "hash = addr.exists ? keccak256(addr.code) : 0"
+ },
+ {
+   "Hex": "40",
+   "Name": "BLOCKHASH",
+   "Gas": "20",
+   "Stack": "blockNum => blockHash(blockNum)",
+   "Description": ""
+ },
+ {
+   "Hex": "41",
+   "Name": "COINBASE",
+   "Gas": "2",
+   "Stack": ". => block.coinbase",
+   "Description": "address of miner of current block"
+ },
+ {
+   "Hex": "42",
+   "Name": "TIMESTAMP",
+   "Gas": "2",
+   "Stack": ". => block.timestamp",
+   "Description": "timestamp of current block"
+ },
+ {
+   "Hex": "43",
+   "Name": "NUMBER",
+   "Gas": "2",
+   "Stack": ". => block.number",
+   "Description": "number of current block"
+ },
+ {
+   "Hex": "44",
+   "Name": "DIFFICULTY",
+   "Gas": "2",
+   "Stack": ". => block.difficulty",
+   "Description": "difficulty of current block"
+ },
+ {
+   "Hex": "45",
+   "Name": "GASLIMIT",
+   "Gas": "2",
+   "Stack": ". => block.gaslimit",
+   "Description": "gas limit of current block"
+ },
+ {
+   "Hex": "46",
+   "Name": "CHAINID",
+   "Gas": "2",
+   "Stack": ". => chain_id",
+   "Description": "push current chain id onto stack"
+ },
+ {
+   "Hex": "47",
+   "Name": "SELFBALANCE",
+   "Gas": "5",
+   "Stack": ". => address(this).balance",
+   "Description": "balance of executing contract, in wei"
+ },
+ {
+   "Hex": "48",
+   "Name": "BASEFEE",
+   "Gas": "2",
+   "Stack": ". => block.basefee",
+   "Description": "base fee of current block"
+ },
+ {
+   "Hex": "49-4F",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "50",
+   "Name": "POP",
+   "Gas": "2",
+   "Stack": "_anon => .",
+   "Description": "remove item from top of stack and discard it"
+ },
+ {
+   "Hex": "51",
+   "Name": "MLOAD",
+   "Gas": "3*",
+   "Stack": "ost => mem[ost:ost+32]",
+   "Description": "read word from memory at offset ost"
+ },
+ {
+   "Hex": "52",
+   "Name": "MSTORE",
+   "Gas": "3*",
+   "Stack": "ost, val => .",
+   "Description": "write a word to memory"
+ },
+ {
+   "Hex": "53",
+   "Name": "MSTORE8",
+   "Gas": "3*",
+   "Stack": "ost, val => .",
+   "Description": "write a single byte to memory"
+ },
+ {
+   "Hex": "54",
+   "Name": "SLOAD",
+   "Gas": "A6",
+   "Stack": "key => storage[key]",
+   "Description": "read word from storage"
+ },
+ {
+   "Hex": "55",
+   "Name": "SSTORE",
+   "Gas": "A7",
+   "Stack": "key, val => .",
+   "Description": "write word to storage"
+ },
+ {
+   "Hex": "56",
+   "Name": "JUMP",
+   "Gas": "8",
+   "Stack": "dst => .",
+   "Description": "$pc := dst"
+ },
+ {
+   "Hex": "57",
+   "Name": "JUMPI",
+   "Gas": "10",
+   "Stack": "dst, condition => .",
+   "Description": "$pc := condition ? dst : $pc + 1"
+ },
+ {
+   "Hex": "58",
+   "Name": "PC",
+   "Gas": "2",
+   "Stack": ". => $pc",
+   "Description": "program counter"
+ },
+ {
+   "Hex": "59",
+   "Name": "MSIZE",
+   "Gas": "2",
+   "Stack": ". => len(mem)",
+   "Description": "size of memory in current execution context, in bytes"
+ },
+ {
+   "Hex": "5A",
+   "Name": "GAS",
+   "Gas": "2",
+   "Stack": ". => gasRemaining",
+   "Description": ""
+ },
+ {
+   "Hex": "5B",
+   "Name": "JUMPDEST",
+   "Gas": "1",
+   "Stack": "",
+   "Description": "mark valid jump destination"
+ },
+ {
+   "Hex": "5C-5F",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "60",
+   "Name": "PUSH1",
+   "Gas": "3",
+   "Stack": ". => uint8",
+   "Description": "push 1-byte value onto stack"
+ },
+ {
+   "Hex": "61",
+   "Name": "PUSH2",
+   "Gas": "3",
+   "Stack": ". => uint16",
+   "Description": "push 2-byte value onto stack"
+ },
+ {
+   "Hex": "62",
+   "Name": "PUSH3",
+   "Gas": "3",
+   "Stack": ". => uint24",
+   "Description": "push 3-byte value onto stack"
+ },
+ {
+   "Hex": "63",
+   "Name": "PUSH4",
+   "Gas": "3",
+   "Stack": ". => uint32",
+   "Description": "push 4-byte value onto stack"
+ },
+ {
+   "Hex": "64",
+   "Name": "PUSH5",
+   "Gas": "3",
+   "Stack": ". => uint40",
+   "Description": "push 5-byte value onto stack"
+ },
+ {
+   "Hex": "65",
+   "Name": "PUSH6",
+   "Gas": "3",
+   "Stack": ". => uint48",
+   "Description": "push 6-byte value onto stack"
+ },
+ {
+   "Hex": "66",
+   "Name": "PUSH7",
+   "Gas": "3",
+   "Stack": ". => uint56",
+   "Description": "push 7-byte value onto stack"
+ },
+ {
+   "Hex": "67",
+   "Name": "PUSH8",
+   "Gas": "3",
+   "Stack": ". => uint64",
+   "Description": "push 8-byte value onto stack"
+ },
+ {
+   "Hex": "68",
+   "Name": "PUSH9",
+   "Gas": "3",
+   "Stack": ". => uint72",
+   "Description": "push 9-byte value onto stack"
+ },
+ {
+   "Hex": "69",
+   "Name": "PUSH10",
+   "Gas": "3",
+   "Stack": ". => uint80",
+   "Description": "push 10-byte value onto stack"
+ },
+ {
+   "Hex": "6A",
+   "Name": "PUSH11",
+   "Gas": "3",
+   "Stack": ". => uint88",
+   "Description": "push 11-byte value onto stack"
+ },
+ {
+   "Hex": "6B",
+   "Name": "PUSH12",
+   "Gas": "3",
+   "Stack": ". => uint96",
+   "Description": "push 12-byte value onto stack"
+ },
+ {
+   "Hex": "6C",
+   "Name": "PUSH13",
+   "Gas": "3",
+   "Stack": ". => uint104",
+   "Description": "push 13-byte value onto stack"
+ },
+ {
+   "Hex": "6D",
+   "Name": "PUSH14",
+   "Gas": "3",
+   "Stack": ". => uint112",
+   "Description": "push 14-byte value onto stack"
+ },
+ {
+   "Hex": "6E",
+   "Name": "PUSH15",
+   "Gas": "3",
+   "Stack": ". => uint120",
+   "Description": "push 15-byte value onto stack"
+ },
+ {
+   "Hex": "6F",
+   "Name": "PUSH16",
+   "Gas": "3",
+   "Stack": ". => uint128",
+   "Description": "push 16-byte value onto stack"
+ },
+ {
+   "Hex": "70",
+   "Name": "PUSH17",
+   "Gas": "3",
+   "Stack": ". => uint136",
+   "Description": "push 17-byte value onto stack"
+ },
+ {
+   "Hex": "71",
+   "Name": "PUSH18",
+   "Gas": "3",
+   "Stack": ". => uint144",
+   "Description": "push 18-byte value onto stack"
+ },
+ {
+   "Hex": "72",
+   "Name": "PUSH19",
+   "Gas": "3",
+   "Stack": ". => uint152",
+   "Description": "push 19-byte value onto stack"
+ },
+ {
+   "Hex": "73",
+   "Name": "PUSH20",
+   "Gas": "3",
+   "Stack": ". => uint160",
+   "Description": "push 20-byte value onto stack"
+ },
+ {
+   "Hex": "74",
+   "Name": "PUSH21",
+   "Gas": "3",
+   "Stack": ". => uint168",
+   "Description": "push 21-byte value onto stack"
+ },
+ {
+   "Hex": "75",
+   "Name": "PUSH22",
+   "Gas": "3",
+   "Stack": ". => uint176",
+   "Description": "push 22-byte value onto stack"
+ },
+ {
+   "Hex": "76",
+   "Name": "PUSH23",
+   "Gas": "3",
+   "Stack": ". => uint184",
+   "Description": "push 23-byte value onto stack"
+ },
+ {
+   "Hex": "77",
+   "Name": "PUSH24",
+   "Gas": "3",
+   "Stack": ". => uint192",
+   "Description": "push 24-byte value onto stack"
+ },
+ {
+   "Hex": "78",
+   "Name": "PUSH25",
+   "Gas": "3",
+   "Stack": ". => uint200",
+   "Description": "push 25-byte value onto stack"
+ },
+ {
+   "Hex": "79",
+   "Name": "PUSH26",
+   "Gas": "3",
+   "Stack": ". => uint208",
+   "Description": "push 26-byte value onto stack"
+ },
+ {
+   "Hex": "7A",
+   "Name": "PUSH27",
+   "Gas": "3",
+   "Stack": ". => uint216",
+   "Description": "push 27-byte value onto stack"
+ },
+ {
+   "Hex": "7B",
+   "Name": "PUSH28",
+   "Gas": "3",
+   "Stack": ". => uint224",
+   "Description": "push 28-byte value onto stack"
+ },
+ {
+   "Hex": "7C",
+   "Name": "PUSH29",
+   "Gas": "3",
+   "Stack": ". => uint232",
+   "Description": "push 29-byte value onto stack"
+ },
+ {
+   "Hex": "7D",
+   "Name": "PUSH30",
+   "Gas": "3",
+   "Stack": ". => uint240",
+   "Description": "push 30-byte value onto stack"
+ },
+ {
+   "Hex": "7E",
+   "Name": "PUSH31",
+   "Gas": "3",
+   "Stack": ". => uint248",
+   "Description": "push 31-byte value onto stack"
+ },
+ {
+   "Hex": "7F",
+   "Name": "PUSH32",
+   "Gas": "3",
+   "Stack": ". => uint256",
+   "Description": "push 32-byte value onto stack"
+ },
+ {
+   "Hex": "80",
+   "Name": "DUP1",
+   "Gas": "3",
+   "Stack": "a => a, a",
+   "Description": "clone 1st value on stack"
+ },
+ {
+   "Hex": "81",
+   "Name": "DUP2",
+   "Gas": "3",
+   "Stack": "_, a => a, _, a",
+   "Description": "clone 2nd value on stack"
+ },
+ {
+   "Hex": "82",
+   "Name": "DUP3",
+   "Gas": "3",
+   "Stack": "_, _, a => a, _, _, a",
+   "Description": "clone 3rd value on stack"
+ },
+ {
+   "Hex": "83",
+   "Name": "DUP4",
+   "Gas": "3",
+   "Stack": "_, _, _, a => a, _, _, _, a",
+   "Description": "clone 4th value on stack"
+ },
+ {
+   "Hex": "84",
+   "Name": "DUP5",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 5th value on stack"
+ },
+ {
+   "Hex": "85",
+   "Name": "DUP6",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 6th value on stack"
+ },
+ {
+   "Hex": "86",
+   "Name": "DUP7",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 7th value on stack"
+ },
+ {
+   "Hex": "87",
+   "Name": "DUP8",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 8th value on stack"
+ },
+ {
+   "Hex": "88",
+   "Name": "DUP9",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 9th value on stack"
+ },
+ {
+   "Hex": "89",
+   "Name": "DUP10",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 10th value on stack"
+ },
+ {
+   "Hex": "8A",
+   "Name": "DUP11",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 11th value on stack"
+ },
+ {
+   "Hex": "8B",
+   "Name": "DUP12",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 12th value on stack"
+ },
+ {
+   "Hex": "8C",
+   "Name": "DUP13",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 13th value on stack"
+ },
+ {
+   "Hex": "8D",
+   "Name": "DUP14",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 14th value on stack"
+ },
+ {
+   "Hex": "8E",
+   "Name": "DUP15",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 15th value on stack"
+ },
+ {
+   "Hex": "8F",
+   "Name": "DUP16",
+   "Gas": "3",
+   "Stack": "..., a => a, ..., a",
+   "Description": "clone 16th value on stack"
+ },
+ {
+   "Hex": "90",
+   "Name": "SWAP1",
+   "Gas": "3",
+   "Stack": "a, b => b, a",
+   "Description": ""
+ },
+ {
+   "Hex": "91",
+   "Name": "SWAP2",
+   "Gas": "3",
+   "Stack": "a, _, b => b, _, a",
+   "Description": ""
+ },
+ {
+   "Hex": "92",
+   "Name": "SWAP3",
+   "Gas": "3",
+   "Stack": "a, _, _, b => b, _, _, a",
+   "Description": ""
+ },
+ {
+   "Hex": "93",
+   "Name": "SWAP4",
+   "Gas": "3",
+   "Stack": "a, _, _, _, b => b, _, _, _, a",
+   "Description": ""
+ },
+ {
+   "Hex": "94",
+   "Name": "SWAP5",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "95",
+   "Name": "SWAP6",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "96",
+   "Name": "SWAP7",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "97",
+   "Name": "SWAP8",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "98",
+   "Name": "SWAP9",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "99",
+   "Name": "SWAP10",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9A",
+   "Name": "SWAP11",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9B",
+   "Name": "SWAP12",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9C",
+   "Name": "SWAP13",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9D",
+   "Name": "SWAP14",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9E",
+   "Name": "SWAP15",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "9F",
+   "Name": "SWAP16",
+   "Gas": "3",
+   "Stack": "a, ..., b => b, ..., a",
+   "Description": ""
+ },
+ {
+   "Hex": "A0",
+   "Name": "LOG0",
+   "Gas": "A8",
+   "Stack": "ost, len => .",
+   "Description": "LOG0(memory[ost:ost+len])"
+ },
+ {
+   "Hex": "A1",
+   "Name": "LOG1",
+   "Gas": "A8",
+   "Stack": "ost, len, topic0 => .",
+   "Description": "LOG1(memory[ost:ost+len], topic0)"
+ },
+ {
+   "Hex": "A2",
+   "Name": "LOG2",
+   "Gas": "A8",
+   "Stack": "ost, len, topic0, topic1 => .",
+   "Description": "LOG1(memory[ost:ost+len], topic0, topic1)"
+ },
+ {
+   "Hex": "A3",
+   "Name": "LOG3",
+   "Gas": "A8",
+   "Stack": "ost, len, topic0, topic1, topic2 => .",
+   "Description": "LOG1(memory[ost:ost+len], topic0, topic1, topic2)"
+ },
+ {
+   "Hex": "A4",
+   "Name": "LOG4",
+   "Gas": "A8",
+   "Stack": "ost, len, topic0, topic1, topic2, topic3 => .",
+   "Description": "LOG1(memory[ost:ost+len], topic0, topic1, topic2, topic3)"
+ },
+ {
+   "Hex": "A5-EF",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "F0",
+   "Name": "CREATE",
+   "Gas": "A9",
+   "Stack": "val, ost, len => addr",
+   "Description": "addr = keccak256(rlp_encode([address(this), this.nonce]))"
+ },
+ {
+   "Hex": "F1",
+   "Name": "CALL",
+   "Gas": "AA",
+   "Stack": "gas, addr, val, argOst, argLen, retOst, retLen => success",
+   "Description": ""
+ },
+ {
+   "Hex": "F2",
+   "Name": "CALLCODE",
+   "Gas": "AA",
+   "Stack": "gas, addr, val, argOst, argLen, retOst, retLen => success",
+   "Description": "same as DELEGATECALL, but does not propagate original msg.sender and msg.value"
+ },
+ {
+   "Hex": "F3",
+   "Name": "RETURN",
+   "Gas": "0*",
+   "Stack": "ost, len => .",
+   "Description": "return mem[ost:ost+len]"
+ },
+ {
+   "Hex": "F4",
+   "Name": "DELEGATECALL",
+   "Gas": "AA",
+   "Stack": "gas, addr, argOst, argLen, retOst, retLen\n=> success",
+   "Description": ""
+ },
+ {
+   "Hex": "F5",
+   "Name": "CREATE2",
+   "Gas": "A9",
+   "Stack": "val, ost, len, salt => addr",
+   "Description": "addr = keccak256(0xff ++ address(this) ++ salt ++ keccak256(mem[ost:ost+len]))[12:]"
+ },
+ {
+   "Hex": "F6-F9",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "FA",
+   "Name": "STATICCALL",
+   "Gas": "AA",
+   "Stack": "gas, addr, argOst, argLen, retOst, retLen => success",
+   "Description": ""
+ },
+ {
+   "Hex": "FB-FC",
+   "Name": "invalid",
+   "Gas": "",
+   "Stack": "",
+   "Description": ""
+ },
+ {
+   "Hex": "FD",
+   "Name": "REVERT",
+   "Gas": "0*",
+   "Stack": "ost, len => .",
+   "Description": "revert(mem[ost:ost+len])"
+ },
+ {
+   "Hex": "FE",
+   "Name": "INVALID",
+   "Gas": "AF",
+   "Stack": "",
+   "Description": "designated invalid opcode - EIP-141"
+ },
+ {
+   "Hex": "FF",
+   "Name": "SELFDESTRUCT",
+   "Gas": "AB",
+   "Stack": "addr => .",
+   "Description": ""
+ }
+]
