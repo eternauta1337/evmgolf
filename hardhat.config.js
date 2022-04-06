@@ -6,6 +6,7 @@ require("@nomiclabs/hardhat-web3");
 function OpcodeCheetsheet(Option) {
   const jsonOpcodes= require('./Opcodes.json');
   var flag = false;
+  var opcodeInfo;
   if(Option == "all") {
     //List all opcodes
     console.log("List of all evm opcodes");
@@ -13,12 +14,13 @@ function OpcodeCheetsheet(Option) {
       console.log(jsonOpcodes[i]["Name"] + ": " + jsonOpcodes[i]["Description"]); 
     }
   }else{
-    //Search the evm opcodes "Option"
-    for (var i=0; i<jsonOpcodes.length; i++) {
-      if(jsonOpcodes[i]["Name"]==Option){
-        console.log("Opcode: " + jsonOpcodes[i]["Name"] + ": " + jsonOpcodes[i]["Description"]); 
-        flag=true;
-      }
+    //Search the evm opcodes "Option" usar .find
+    var opcodeInfo = jsonOpcodes.find(function(e) {
+      return e.Name == Option; });
+    
+    if (opcodeInfo){
+      console.log("Opcode: " + opcodeInfo["Name"] + ": " + opcodeInfo["Description"]); 
+      flag=true;
     }
     //in case the option not exist in opcodes list
     if(flag==false){
