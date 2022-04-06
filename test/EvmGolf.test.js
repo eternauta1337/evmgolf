@@ -11,21 +11,22 @@ describe("EvmGolf", function () {
   let TestLevel;
   let level;
 
-  before('deploy EVMGolf', async function () {
+  beforeEach('deploy EVMGolf', async function () {
       const factory = await ethers.getContractFactory('EvmGolf');
       EvmGolf = await factory.deploy();
+      
   });
 
   before('deploy Test Level', async function () {
     const factory = await ethers.getContractFactory('TestLevel');
     TestLevel = await factory.deploy();
+    level = TestLevel.address;
   });
 
   before('set variables', async function () {
-    [player] = (await ethers.getSigners());
-    // TODO are these different?
-    level = TestLevel.address;
-    solution = EvmGolf.address;
+    [player, solution] = await ethers.getSigners();
+    player = player.address;
+    solution = solution.address;
   });
 
   describe('registerLevel with existing level', function () {
