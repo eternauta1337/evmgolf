@@ -59,7 +59,6 @@ contract EvmGolf {
             });
            
             // increments and decrements a corresponding victories mapping
-            console.log('hello', _victories);
             _decrementVictories(past_record_holder);
             _incrementVictories(player);
 
