@@ -27,14 +27,40 @@ contract EvmGolf {
 
     error LevelAlreadyRegistered(ILevel level);
     error LevelFailedSubmission(ILevel leve);
+    error InvalidLevel();
+    
+    function _isLevelValid(address levelAddress)  private returns (bool) {
+        if (levelAddress.code.length==0){
+            return false;
+        } 
+
+        ILevel level = ILevel(levelAddress);
+        if(bytes(level.name()).length==0){
+            return false;
+        }
+
+        return true;
+    }
 
     // TODO Verify level interface
-    function registerLevel(ILevel newLevel) external {
-        if (_levelsMapping[newLevel].author != address(0)){
-            revert LevelAlreadyRegistered(newLevel);
+    //Chio work here for do the task to verify if the register level is valid or not.
+    function registerLevel(address levelAddress) external {
+        if (!_isLevelValid(levelAddress)){
+                                  
+            revert InvalidLevel();
+            
         }
-        _levelsMapping[newLevel].author = msg.sender;
-        _levelAddress.push(newLevel);
+
+       
+       //_levelsMapping[newLevel].author = msg.sender;
+       //_levelAddress.push(newLevel);
+
+       //Evelyn code  
+       // if (_levelsMapping[newLevel].author != address(0)){
+       //     revert LevelAlreadyRegistered(newLevel);
+       // }
+       // _levelsMapping[newLevel].author = msg.sender;
+       // _levelAddress.push(newLevel);
     }
 
     function playLevel(ILevel level, address solution) external {

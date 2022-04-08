@@ -12,7 +12,7 @@ describe("EvmGolf", function () {
   let LongSolution;
   let ShortSolution;
   let level;
-
+  
   beforeEach('deploy EVMGolf', async function () {
       const factory = await ethers.getContractFactory('EvmGolf');
       EvmGolf = await factory.deploy();
@@ -24,6 +24,7 @@ describe("EvmGolf", function () {
     level = TestLevel.address;
   });
 
+  /*
   before('deploy long solution', async function () {
     const factory = await ethers.getContractFactory('LongSolution');
     LongSolution = await factory.deploy();
@@ -38,16 +39,27 @@ describe("EvmGolf", function () {
     player = ShortSolution.signer.address;
     solution = ShortSolution.address;
   });
+*/
 
-  describe('registerLevel with existing level', function () {
-    it('reverts with a new level name that already exists', async function () {
-        await EvmGolf.registerLevel(level);
+  /*
+  describe('registerLevel Chio test', function () {
+    it('register the level with validations', async function () {
+        await EvmGolf.registerLevel();
         // TODO How to check error its been reverted with
         await expect(EvmGolf.registerLevel(level)).to.be.reverted;
         // await expect(EvmGolf.registerLevel(level)).to.be.revertedWith(`LevelAlreadyRegistered(${level})`);
     });
   });
+  */
 
+
+  describe('Register new Level', function () {
+    it('Validate new level and add to EVMGolf', async function () {
+        console.log(await EvmGolf.registerLevel(level.address));
+        
+    });
+  });
+/*
   describe('register and play', function () {
     it('registers a level', async function () {
         await EvmGolf.registerLevel(level);
@@ -160,4 +172,6 @@ describe("EvmGolf", function () {
         });
     });
   });
+  */
+
 });

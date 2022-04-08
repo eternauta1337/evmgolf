@@ -6,6 +6,14 @@ async function main() {
     await evmGolf.deployed();
   
     console.log("EvmGolf deployed to:", evmGolf.address);
+
+    // Deploy a Level
+    const factory1 = await ethers.getContractFactory("TestLevel");
+    const evmLevel = await factory1.deploy();
+  
+    await evmLevel.deployed();
+  
+    console.log("EvmLevel deployed to:", evmLevel.address);
 }
   
 main()

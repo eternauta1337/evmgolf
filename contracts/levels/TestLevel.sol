@@ -5,6 +5,17 @@ import "../interfaces/ILevel.sol";
 // Should this file be here or in the tests directory?
 
 contract TestLevel is ILevel {
+
+    address private authorAddress;
+    
+    constructor() {
+        authorAddress = msg.sender;
+    }
+
+    function author() external view returns (address) {
+        return authorAddress;
+    }
+
     function name() external pure override returns (string memory) {
         return "TestLevel";
     }
@@ -19,6 +30,15 @@ contract TestLevel is ILevel {
 }
 
 contract FailedTestLevel is ILevel {
+    address public authorAddress;
+    
+    constructor() {
+        authorAddress = msg.sender;
+    }
+
+    function author() external view returns (address) {
+        return authorAddress;
+    }
     function name() external pure override returns (string memory) {
         return "FailedTestLevel";
     }
