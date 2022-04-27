@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.12;
 import "./interfaces/ILevel.sol";
 import "hardhat/console.sol";
 
@@ -15,7 +15,7 @@ contract EvmGolf {
     }
 
     mapping(ILevel => Level) private _levelsMapping; // level name -> bool
-    ILevel[] private _levelAddress;
+    ILevel[] private _levelAddress; //hacer plural
     mapping(address => ILevel) private _authors; // author -> level
     mapping(ILevel => address) private _records; // level -> author
     mapping(ILevel => address) private _solutions; // level -> solution
@@ -24,6 +24,8 @@ contract EvmGolf {
     event LevelSolved(ILevel level, address solution, address player);
     event LevelFailed(ILevel level, address solution, address player);
     event LevelRecord(ILevel level, address solution, address player);
+
+    //event GetLevels();
 
     error LevelAlreadyRegistered(ILevel level);
     error LevelFailedSubmission(ILevel leve);
@@ -42,25 +44,31 @@ contract EvmGolf {
         return true;
     }
 
-    // TODO Verify level interface
-    //Chio work here for do the task to verify if the register level is valid or not.
     function registerLevel(address levelAddress) external {
         if (!_isLevelValid(levelAddress)){
                                   
             revert InvalidLevel();
             
-        }
+        } 
+        //add the new level to levels array
+        ILevel level = ILevel(levelAddress);
+        _levelAddress.push(level);
+        
+        
+        //    _levelsMapping[levelAddress].author = msg.sender;
+        //    _levelAddress.push(levelAddress);
 
        
-       //_levelsMapping[newLevel].author = msg.sender;
-       //_levelAddress.push(newLevel);
+  
+       
+    }
+    //listado de los niveles
+    function getLevels() external view returns (ILevel[] memory){
+        return _levelAddress;
+    }
 
-       //Evelyn code  
-       // if (_levelsMapping[newLevel].author != address(0)){
-       //     revert LevelAlreadyRegistered(newLevel);
-       // }
-       // _levelsMapping[newLevel].author = msg.sender;
-       // _levelAddress.push(newLevel);
+    function getCountOfLevels() external view returns (uint256){
+        return (_levelAddress.length);
     }
 
     function playLevel(ILevel level, address solution) external {

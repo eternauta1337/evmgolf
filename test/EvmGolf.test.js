@@ -1,7 +1,7 @@
 const assert = require('assert/strict');
 const { expect } = require('chai');
 const { waffle } = require('hardhat');
-// const { deployContract } = waffle;
+const { deployContract } = waffle;
 
 describe("EvmGolf", function () {
   let player;
@@ -12,16 +12,73 @@ describe("EvmGolf", function () {
   let LongSolution;
   let ShortSolution;
   let level;
+  let level1;
+  let level2;
+  let levelX;
   
-  beforeEach('deploy EVMGolf', async function () {
+  before('deploy EVMGolf', async function () {
       const factory = await ethers.getContractFactory('EvmGolf');
       EvmGolf = await factory.deploy();
   });
 
   before('deploy Test Level', async function () {
     const factory = await ethers.getContractFactory('TestLevel');
-    TestLevel = await factory.deploy();
-    level = TestLevel.address;
+    level = await factory.deploy();
+    
+  });
+
+  before('deploy Level 1', async function () {
+    const factory = await ethers.getContractFactory('Level1');
+    level1 = await factory.deploy();
+    
+  });
+
+  before('deploy Level 2', async function () {
+    const factory = await ethers.getContractFactory('Level2');
+    level2 = await factory.deploy();
+    
+  });
+
+  describe('Register new Level1', function () {
+    it('Validate new level1 and add to EVMGolf', async function () {
+        console.log(await EvmGolf.registerLevel(level1.address));
+    });
+  });
+
+  describe('Register new Level2', function () {
+    it('Validate new level2 and add to EVMGolf', async function () {
+        console.log(await EvmGolf.registerLevel(level2.address));
+    });
+  });
+
+  describe('List of levels on EVMGolf', function () {
+    it('List all levels on EVMGolf', async function () {
+        
+        const levelAddresses = await EvmGolf.getLevels();
+        console.log(levelAddresses);
+
+        //console.log((await EvmGolf.getLevels()).length);
+
+
+    });
+  });
+
+  describe('Count of levels on EVMGolf', function () {
+    it('Number of levels on EVMGolf', async function () {
+        console.log(await EvmGolf.getCountOfLevels);
+    });
+  });
+
+  before('deploy LevelX', async function () {
+    const factory = await ethers.getContractFactory('LevelX');
+    levelX = await factory.deploy();
+    
+  });
+
+  describe('Give the description of one level', function () {
+    it('Validate the description of one level', async function () {
+        console.log(await levelX.description(1));
+    });
   });
 
   /*
@@ -53,12 +110,7 @@ describe("EvmGolf", function () {
   */
 
 
-  describe('Register new Level', function () {
-    it('Validate new level and add to EVMGolf', async function () {
-        console.log(await EvmGolf.registerLevel(level.address));
-        
-    });
-  });
+  
 /*
   describe('register and play', function () {
     it('registers a level', async function () {
