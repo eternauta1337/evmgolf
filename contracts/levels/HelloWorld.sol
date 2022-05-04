@@ -2,8 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "../interfaces/ILevel.sol";
-
+/*
 contract HelloWorld is ILevel {
+
     uint val = 1;
 
     function name() external pure override returns (string memory) {
@@ -36,7 +37,7 @@ contract HelloWorld is ILevel {
         }
 
         return keccak256(response) == keccak256(abi.encodePacked("42"));
-    }
+    
 }
 
 contract Hello {
@@ -60,3 +61,5 @@ contract HelloBad2 {
         return "42";
     }
 }
+*/
+
