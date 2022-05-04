@@ -1,7 +1,25 @@
+// Dependency file: contracts/interfaces/ILevel.sol
+
 //SPDX-License-Identifier: Unlicense
+// pragma solidity ^0.8.12;
+
+
+interface ILevel {
+    function author() external returns (address);
+
+    function name() external returns (string memory);
+
+    function description() external returns (string memory);
+
+    function submit(address candidate) external returns (bool);
+}
+
+
+// Root file: contracts/levels/LevelX.sol
+
 pragma solidity ^0.8.12;
 
-import "../interfaces/ILevel.sol";
+// import "contracts/interfaces/ILevel.sol";
 
 contract LevelX is ILevel {
 
@@ -19,7 +37,7 @@ contract LevelX is ILevel {
         return "TestLevel";
     }
 
-    function description() external pure override returns (string memory, string memory) {
+    function description() external pure override returns (string memory) {
         //This function return the description of a levelNumber
         /*const levelNumber = 1;
         if(levelNumber==1){

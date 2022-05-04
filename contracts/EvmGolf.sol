@@ -15,7 +15,7 @@ contract EvmGolf {
     }
 
     mapping(ILevel => Level) private _levelsMapping; // level name -> bool
-    ILevel[] private _levelAddress; //hacer plural
+    ILevel[] private _levelAddresses; 
     mapping(address => ILevel) private _authors; // author -> level
     mapping(ILevel => address) private _records; // level -> author
     mapping(ILevel => address) private _solutions; // level -> solution
@@ -25,10 +25,8 @@ contract EvmGolf {
     event LevelFailed(ILevel level, address solution, address player);
     event LevelRecord(ILevel level, address solution, address player);
 
-    //event GetLevels();
-
     error LevelAlreadyRegistered(ILevel level);
-    error LevelFailedSubmission(ILevel leve);
+    error LevelFailedSubmission(ILevel level);
     error InvalidLevel();
     
     function _isLevelValid(address levelAddress)  private returns (bool) {
@@ -52,23 +50,16 @@ contract EvmGolf {
         } 
         //add the new level to levels array
         ILevel level = ILevel(levelAddress);
-        _levelAddress.push(level);
+        _levelAddresses.push(level);
         
-        
-        //    _levelsMapping[levelAddress].author = msg.sender;
-        //    _levelAddress.push(levelAddress);
-
-       
-  
-       
     }
     //listado de los niveles
     function getLevels() external view returns (ILevel[] memory){
-        return _levelAddress;
+        return _levelAddresses;
     }
 
     function getCountOfLevels() external view returns (uint256){
-        return (_levelAddress.length);
+        return (_levelAddresses.length);
     }
 
     function playLevel(ILevel level, address solution) external {
