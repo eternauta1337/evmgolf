@@ -1,5 +1,3 @@
-/*global require*/
-//const { expect } = require("chai");
 const { ethers }  = require("hardhat");
 
 describe("EvmGolf", function () {

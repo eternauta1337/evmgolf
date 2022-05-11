@@ -1,9 +1,10 @@
-const assert = require('assert/strict');
+// const assert = require("assert/strict");
 
-const FOURTY_TWO_HEX = '0x3432';
-const HELLO_HEX = '0x68656c6c6f';
-const WORLD_HEX = '0x776f726c64';
-const HI_HEX = '0x6869';
+// const FOURTY_TWO_HEX = "0x3432";
+// const HELLO_HEX = "0x68656c6c6f";
+// const WORLD_HEX = "0x776f726c64";
+// const HI_HEX = "0x6869";
+
 /*
 describe.skip("HelloWorld level", function () {
   let signer;

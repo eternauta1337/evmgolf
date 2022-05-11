@@ -1,3 +1,5 @@
+const ethers = require("ethers");
+
 async function main() {
     // We get the contract to deploy
     const factory = await ethers.getContractFactory("EvmGolf");

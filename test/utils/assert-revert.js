@@ -8,7 +8,7 @@ module.exports = async function assertRevert(tx, expectedMessage) {
   }
 
   if (!error) {
-    throw new Error('Transaction was expected to revert, but it did not');
+    throw new Error("Transaction was expected to revert, but it did not");
   } else if (expectedMessage) {
     const receivedMessage = error.toString();
 
