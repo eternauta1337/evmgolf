@@ -6,26 +6,27 @@ require("@nomiclabs/hardhat-web3");
 
 //Read all opcodes or the description of one.
 function OpcodeCheetsheet(Option) {
-  const jsonOpcodes= require("./Opcodes.json");
+  const jsonOpcodes = require("./Opcodes.json");
   var flag = false;
 
-  if(Option == "all") {
+  if (Option == "all") {
     //List all opcodes
     console.log("List of all evm opcodes");
-    for (var i=0; i<jsonOpcodes.length; i++) {
+    for (var i = 0; i < jsonOpcodes.length; i++) {
       console.log(jsonOpcodes[i]["Name"] + ": " + jsonOpcodes[i]["Description"]);
     }
-  }else{
+  } else {
     //Search the evm opcodes "Option" usar .find
-    var opcodeInfo = jsonOpcodes.find(function(e) {
-      return e.Name == Option; });
+    var opcodeInfo = jsonOpcodes.find(function (e) {
+      return e.Name == Option;
+    });
 
-    if (opcodeInfo){
+    if (opcodeInfo) {
       console.log("Opcode: " + opcodeInfo["Name"] + ": " + opcodeInfo["Description"]);
-      flag=true;
+      flag = true;
     }
     //in case the option not exist in opcodes list
-    if(flag==false){
+    if (flag == false) {
       console.log("The opcode: " + Option + " does not exist");
     }
   }
@@ -43,6 +44,6 @@ module.exports = {
   networks: {
     localhost: {
       url: "http://localhost:8545",
-    }
+    },
   },
 };

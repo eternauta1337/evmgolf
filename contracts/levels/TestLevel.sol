@@ -2,7 +2,6 @@
 pragma solidity ^0.8.12;
 
 contract TestLevel {
-
     address private authorAddress;
 
     constructor() {
@@ -21,4 +20,3 @@ contract TestLevel {
         return ("Contract that is used for tests");
     }
 }
-

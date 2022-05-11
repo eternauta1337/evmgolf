@@ -30,12 +30,12 @@ contract EvmGolf {
     error InvalidLevel();
 
     function _isLevelValid(address levelAddress) private returns (bool) {
-        if (levelAddress.code.length==0){
+        if (levelAddress.code.length == 0) {
             return false;
         }
 
         ILevel level = ILevel(levelAddress);
-        if(bytes(level.name()).length==0){
+        if (bytes(level.name()).length == 0) {
             return false;
         }
 
@@ -43,7 +43,7 @@ contract EvmGolf {
     }
 
     function registerLevel(address levelAddress) external {
-        if (!_isLevelValid(levelAddress)){
+        if (!_isLevelValid(levelAddress)) {
             revert InvalidLevel();
         }
 
@@ -53,11 +53,11 @@ contract EvmGolf {
     }
 
     //listado de los niveles
-    function getLevels() external view returns (ILevel[] memory){
+    function getLevels() external view returns (ILevel[] memory) {
         return _levelAddresses;
     }
 
-    function getCountOfLevels() external view returns (uint256){
+    function getCountOfLevels() external view returns (uint256) {
         return (_levelAddresses.length);
     }
 
@@ -78,10 +78,7 @@ contract EvmGolf {
             address pastRecordHolder = _levelsMapping[level].recordSolution.player;
 
             // Save new record solution
-            _levelsMapping[level].recordSolution = RecordSolution({
-                player: player,
-                solution: solution
-            });
+            _levelsMapping[level].recordSolution = RecordSolution({player: player, solution: solution});
 
             // increments and decrements a corresponding victories mapping
             _decrementVictories(pastRecordHolder);
@@ -91,7 +88,7 @@ contract EvmGolf {
         }
     }
 
-    function getVictories(address player) external view returns (uint){
+    function getVictories(address player) external view returns (uint) {
         return _victories[player];
     }
 
@@ -111,8 +108,6 @@ contract EvmGolf {
         if (recordSolution.solution == address(0)) {
             return true;
         }
-        return recordSolution.solution.code.length >  solution.code.length;
+        return recordSolution.solution.code.length > solution.code.length;
     }
 }
-
-

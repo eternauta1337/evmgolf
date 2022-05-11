@@ -1,4 +1,4 @@
-const { ethers }  = require("hardhat");
+const { ethers } = require("hardhat");
 
 describe("EvmGolf", function () {
   let EvmGolf;
@@ -15,26 +15,26 @@ describe("EvmGolf", function () {
     const EvmGolfFactory = await ethers.getContractFactory("EvmGolf");
     EvmGolf = await EvmGolfFactory.deploy();
     await EvmGolf.deployed();
-  });  
+  });
 
   it("Level1 contract it's deployed", async function () {
     const Level1Factory = await ethers.getContractFactory("Level1");
     Level1 = await Level1Factory.deploy();
     await Level1.deployed();
-  }); 
+  });
 
   it("Level2 contract it's deployed", async function () {
     const Level2Factory = await ethers.getContractFactory("Level2");
     Level2 = await Level2Factory.deploy();
     await Level2.deployed();
-  }); 
+  });
 
   it("Level3 contract it's deployed", async function () {
     const Level3Factory = await ethers.getContractFactory("Level3");
     Level3 = await Level3Factory.deploy();
     await Level3.deployed();
   });
-  
+
   it("Level4 contract it's deployed", async function () {
     const Level4Factory = await ethers.getContractFactory("Level4");
     Level4 = await Level4Factory.deploy();
@@ -67,63 +67,62 @@ describe("EvmGolf", function () {
 
   describe("Register Level1 on EvmGolf", function () {
     it("Validate Level1 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level1.address);
+      await EvmGolf.registerLevel(Level1.address);
     });
   });
 
   describe("Register Level2 on EvmGolf", function () {
     it("Validate Level2 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level2.address);
+      await EvmGolf.registerLevel(Level2.address);
     });
   });
 
   describe("Register Level3 on EvmGolf", function () {
     it("Validate Level3 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level3.address);
+      await EvmGolf.registerLevel(Level3.address);
     });
   });
 
   describe("Register Level4 on EvmGolf", function () {
     it("Validate Level4 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level4.address);
+      await EvmGolf.registerLevel(Level4.address);
     });
   });
 
   describe("Register Level5 on EvmGolf", function () {
     it("Validate Level5 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level5.address);
+      await EvmGolf.registerLevel(Level5.address);
     });
   });
 
   describe("Register Level6 on EvmGolf", function () {
     it("Validate Level6 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level6.address);
+      await EvmGolf.registerLevel(Level6.address);
     });
   });
 
   describe("Register Level7 on EvmGolf", function () {
     it("Validate Level7 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level7.address);
+      await EvmGolf.registerLevel(Level7.address);
     });
   });
 
   describe("Register Level8 on EvmGolf", function () {
     it("Validate Level8 and add to EVMGolf", async function () {
-        await EvmGolf.registerLevel(Level8.address);
+      await EvmGolf.registerLevel(Level8.address);
     });
   });
 
   describe("List of levels on EVMGolf", function () {
     it("List all levels on EVMGolf", async function () {
-        const levelAddresses = await EvmGolf.getLevels();
-        console.log(levelAddresses);
+      const levelAddresses = await EvmGolf.getLevels();
+      console.log(levelAddresses);
     });
   });
 
   describe("Return the description of Level8", function () {
     it("Return the description of Level8", async function () {
-        console.log(await Level2.description());
+      console.log(await Level2.description());
     });
   });
-
 });
