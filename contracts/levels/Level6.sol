@@ -5,11 +5,11 @@ import "../interfaces/ILevel.sol";
 
 contract Level6 is ILevel{
     address private authorAddress;
-    
+
     constructor() {
         authorAddress = msg.sender;
     }
-    
+
      function author() external view returns (address) {
         return authorAddress;
     }
@@ -22,7 +22,7 @@ contract Level6 is ILevel{
          "returns the offspring address whenever interacted with anything other than zero, otherwise self destructs.");
     }
 
-    function submit(address candidate) external pure override returns (bool) {
+    function submit(address) external pure override returns (bool) {
         return false;
     }
 

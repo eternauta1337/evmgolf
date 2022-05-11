@@ -4,7 +4,7 @@ pragma solidity ^0.8.12;
 contract TestLevel {
 
     address private authorAddress;
-    
+
     constructor() {
         authorAddress = msg.sender;
     }
