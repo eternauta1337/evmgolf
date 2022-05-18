@@ -5,7 +5,8 @@ import "../interfaces/ILevel.sol";
 
 contract Level1 is ILevel {
     address private authorAddress;
-
+    address private solucionAddress;
+    
     constructor() {
         authorAddress = msg.sender;
     }
@@ -22,7 +23,18 @@ contract Level1 is ILevel {
         return ("What is the minimum runtime bytecode of a contract that returns the current block number if called?", "");
     }
 
-    function submit(address) external pure override returns (bool) {
-        return false;
+    function submit(address candidate) external view override returns (bool) {
+        bytes memory actualSolution;
+        bytes memory candidateSolution;
+
+        candidateSolution = candidate.code;
+        actualSolution = solucionAddress.code;
+        
+        if (candidateSolution.length < actualSolution.length){
+            actualSolution = candidateSolution;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
