@@ -6,7 +6,7 @@ interface ILevel {
 
     function name() external returns (string memory);
 
-    function description() external returns (string memory, string memory);
+    function description() external returns (string memory);
 
     function submit(address candidate) external returns (bool);
 }
