@@ -24,17 +24,11 @@ contract Level1 is ILevel {
     }
 
     function submit(address candidate) external view override returns (bool) {
-        bytes memory actualSolution;
-        bytes memory candidateSolution;
-
-        candidateSolution = candidate.code;
-        actualSolution = solucionAddress.code;
-        
-        if (candidateSolution.length < actualSolution.length){
-            actualSolution = candidateSolution;
-            return true;
-        } else {
-            return false;
+       
+        assembly {
+            let sizeCandidate:=extcodesize(candidate)
+            let sizeActualSolution:=extcodesize(solucionAddress)
         }
+        
     }
 }
