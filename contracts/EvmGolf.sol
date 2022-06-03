@@ -29,7 +29,7 @@ contract EvmGolf {
         (success, ) = address(level).call(abi.encodeWithSelector(ILevel.description.selector));
         if (!success) revert LevelDoesNotConformToInterface();
 
-        (success, ) = address(level).call(abi.encodeWithSelector(ILevel.submit.selector));
+        (success, ) = address(level).call(abi.encodeWithSelector(ILevel.submit.selector, address(0), address(0)));
         if (!success) revert LevelDoesNotConformToInterface();
     }
 
