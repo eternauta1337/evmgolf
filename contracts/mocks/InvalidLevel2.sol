@@ -6,6 +6,10 @@ contract InvalidLevel2 {
         42;
     }
 
+    function name() external returns (string memory) {
+        return "Juanito";
+    }
+
     function author() external returns (address) {
         return address(0);
     }

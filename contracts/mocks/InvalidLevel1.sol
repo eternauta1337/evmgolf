@@ -10,7 +10,11 @@ contract InvalidLevel1 {
         return "Juanito";
     }
 
-    function description() external returns (string memory) {
-        return "Erase una vez...";
+    function author() external returns (address) {
+        return address(0);
+    }
+    
+    function submit() external returns (bool) {
+        return true;
     }
 }
