@@ -1,28 +1,35 @@
-////SPDX-License-Identifier: Unlicense
-//pragma solidity ^0.8.12;
+//SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.12;
 
-//import "../interfaces/ILevel.sol";
+import "../interfaces/ILevel.sol";
 
-//contract Level1 is ILevel {
-//    address private authorAddress;
+contract Level1 is ILevel {
+    
+    function name() external pure override returns (string memory) {
+        return "EVM Golf 1";
+    }
 
-//    constructor() {
-//        authorAddress = msg.sender;
-//    }
+    function description() external pure override returns (string memory) {
+        return "What is the minimum runtime bytecode of a contract that returns the current block number if called?";
+    }
 
-//    function author() external view returns (address) {
-//        return authorAddress;
-//    }
+    function submit(address submitAddress, address winner) external view override returns (bool) {
+        
+//        assembly {
+//                    let sizeCandidate:=extcodesize(candidate)
+//                    let sizeActualSolution:=extcodesize(solucionAddress)
+//                }
+        bytes memory submitCode;
+        bytes memory winnerCode;
+        
+        submitCode = submitAddress.code;
+        winnerCode = winner.code;
 
-//    function name() external pure override returns (string memory) {
-//        return "EVM Golf 1";
-//    }
+      //  if(submitCode.length <= solutionCode.length){
+      //      solutionAddress=submitAddress;
+      //      return true;
+      //  }
+        return false;
 
-//    function description() external pure override returns (string memory) {
-//        return "What is the minimum runtime bytecode of a contract that returns the current block number if called?";
-//    }
-
-//    function submit(address) external pure override returns (bool) {
-//        return false;
-//    }
-//}
+    }
+}
