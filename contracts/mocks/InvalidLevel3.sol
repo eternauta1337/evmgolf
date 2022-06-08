@@ -10,7 +10,11 @@ contract InvalidLevel3 {
         return address(0);
     }
 
-    function name() external returns (string memory) {
-        return "Juanito";
+    function description() external returns (string memory) {
+        return "Erase una vez...";
+    }
+
+    function submit() external returns (bool) {
+        return true;
     }
 }
