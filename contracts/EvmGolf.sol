@@ -13,7 +13,7 @@ contract EvmGolf {
         address author;
         address solution;
     }
-    //registrar el nivel, con su author
+    
     Level[] private _levels;
 
     function validate(ILevel level) public {
@@ -45,19 +45,32 @@ contract EvmGolf {
 
     function submitLevel(ILevel level, address solutionCandidate) external returns (bool) {
         uint i = 0;
-        Level memory element;
+        Level memory structLevel;
         ILevel evmLevel;
         bool isSolution;
 
         isSolution = false;
-
+        
         while (i<_levels.length) {
-            element = _levels[i];
-            evmLevel = element.level;
-            if (evmLevel == level) {
+            structLevel = _levels[i];
+            evmLevel = structLevel.level;
+        
+            if (address(evmLevel) == address(level)) {
+                if (structLevel.solution == address(0)) {
+                    structLevel.solution = address(level);
+                    _levels[i] = structLevel;
+                    isSolution = true;
+
+                } else {
+                    isSolution = evmLevel.submit(solutionCandidate, structLevel.solution);
+                    if (isSolution == true)  {
+                        structLevel.solution = address(solutionCandidate);
+                        _levels[i] = structLevel;
+                    }    
+                }
                 i = _levels.length;
-                isSolution = evmLevel.submit(solutionCandidate, element.solution);
             } else {
+            
                 i++;
             }    
         }

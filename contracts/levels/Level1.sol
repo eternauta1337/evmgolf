@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.12;
-
+import "hardhat/console.sol";
 import "../interfaces/ILevel.sol";
 
 contract Level1 is ILevel {
@@ -24,6 +24,9 @@ contract Level1 is ILevel {
         
         submitCode = submitAddress.code;
         winnerCode = winner.code;
+
+        console.log("Val1", submitCode.length);
+        console.log("Val2", winnerCode.length);
 
       //  if(submitCode.length <= solutionCode.length){
       //      solutionAddress=submitAddress;

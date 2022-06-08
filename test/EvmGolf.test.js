@@ -59,14 +59,14 @@ describe("EvmGolf Proyect", function () {
     });
 
     describe('when trying to register valid levels', function () {
-            
-      before('deploy level 1', async function () {
-        const factory = await ethers.getContractFactory("Level1");
-        Level1 = await factory.deploy();
+      let ValidLevel;        
+      before('deploy valid level', async function () {
+        const factory = await ethers.getContractFactory("ValidLevel");
+        ValidLevel = await factory.deploy();
       });
 
-      it('register a level 1', async function () {
-        await EvmGolf.registerLevel(Level1.address);
+      it('register a valid level', async function () {
+        await EvmGolf.registerLevel(ValidLevel.address);
       });
 
       it('shows that there is one level', async function () {
@@ -74,11 +74,32 @@ describe("EvmGolf Proyect", function () {
       });
     });
 
-    describe('when trying to submit for a level 1', function () {
+    describe('when trying to register level 1', function () {
       
-      it('shows the solution is not the best one', async function () {
-        assert(await EvmGolf.submitLevel(Level1.address, Level1.address), "false");
+      before('deploy level 1', async function () {
+        const factory = await ethers.getContractFactory("Level1");
+        Level1 = await factory.deploy();
+      });
+
+      it('register level1 to EmvGolf', async function () {
+        await EvmGolf.registerLevel(Level1.address);
+      });
+
+      it('shows that there is two levels on EvmGolf', async function () {
+        assert(await EvmGolf.getNumLevels(), 2);
       });
     });
   });
+  
+  describe('when trying to submit for a level 1', function () {
+      
+    it('shows the solution is the best because it is the first try', async function () {
+      assert(await EvmGolf.submitLevel(Level1.address, Level1.address), "true");
+    });
+
+    it('shows the solution is not the best one', async function () {
+      assert(await EvmGolf.submitLevel(Level1.address, Level1.address), "false");
+    });
+  });
+  
 });
